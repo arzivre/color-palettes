@@ -3,7 +3,7 @@ import ColorBox from './ColorBox'
 
 const Palette = (palette: PaletteProps) => {
   const colorBoxes = palette.palette.colors.map((color) => (
-    <ColorBox background={color.color} name={color.name} />
+    <ColorBox key={color.color} background={color.color} name={color.name} />
   ))
 
   return (
