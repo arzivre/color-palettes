@@ -5,8 +5,7 @@ import { generatePalette } from './colorHelpers'
 export default function App() {
   return (
     <div>
-      <Palette palette={seedColors[2]} />
-      {JSON.stringify(generatePalette(seedColors[2]))}
+      <Palette generatedPalette={generatePalette(seedColors[4])} />
     </div>
   )
 }
