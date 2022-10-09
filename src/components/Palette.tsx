@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Slider from 'rc-slider'
 import ColorBox from './ColorBox'
 import 'rc-slider/assets/index.css'
 import Navbar from './Navbar'
@@ -23,16 +22,34 @@ interface Color {
   rgba: string
 }
 
+const colorsType = [
+  { id: 1, name: 'HEX - #FFFFFF', value: 'hex' },
+  { id: 2, name: 'RGB - rgb(255,255,255)', value: 'rgb' },
+  { id: 3, name: 'RGBA - rgba(255,255,255,1.0)', value: 'rgba' },
+]
+
 const Palette = ({ generatedPalette }: Props) => {
   const [level, setLevel] = useState<number>(500)
+  const [type, setType] = useState(colorsType[0])
 
   const colorBoxes = generatedPalette.colors[level].map((color) => (
-    <ColorBox key={color.id} background={color.hex} name={color.name} />
+    <ColorBox
+      key={color.id}
+      // @ts-ignore
+      background={color[`${type.value}`]}
+      name={color.name}
+    />
   ))
 
   return (
     <div className='h-[100vh]'>
-      <Navbar level={level} setLevel={setLevel} />
+      <Navbar
+        level={level}
+        setLevel={setLevel}
+        type={type}
+        setType={setType}
+        colorsType={colorsType}
+      />
       <div className='h-[90%]'>{colorBoxes}</div>
       {/* Footer */}
     </div>

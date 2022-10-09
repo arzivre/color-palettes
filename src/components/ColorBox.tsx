@@ -59,7 +59,7 @@ const ColorBox = ({ background, name }: ColorBoxPageProps) => {
         flex-col items-center justify-center text-[400px] text-white opacity-0
          ${
            clipboard.copied &&
-           'z-20 scale-[1] transform  opacity-100 transition delay-300 ease-in-out'
+           'z-20 scale-[1] transform  opacity-100 transition delay-150 ease-in-out'
          }
       `}
       >
@@ -76,9 +76,9 @@ const ColorBox = ({ background, name }: ColorBoxPageProps) => {
           onClick={() => clipboard.copy(background)}
           className='copy-button absolute  top-[50%] left-[50%] -mt-[15px] -ml-[50px] block
           h-[30px] w-[100px] bg-[rgba(255,255,255,0.3)] text-center text-base uppercase text-white
-          opacity-0 outline-none group-hover:opacity-100 group-hover:transition group-hover:delay-100'
+          opacity-0 outline-none group-hover:opacity-100 group-hover:transition group-hover:delay-150'
         >
-          {clipboard.copied ? 'Copied' : 'Copy'}
+          {clipboard.copied ? `Copied - ${background}` : 'Copy'}
         </button>
       </div>
       <span
