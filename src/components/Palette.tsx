@@ -31,16 +31,17 @@ const Palette = ({ generatedPalette }: Props) => {
 
   return (
     <div className='h-[100vh]'>
-      {/* Navbar */}
-      <Slider
-        min={100}
-        max={900}
-        step={100}
-        defaultValue={level}
-        onChange={(nextValues) => {
-          setLevel(nextValues as number)
-        }}
-      />
+      <div className='my-0 mx-2.5 w-[340px] inline-block'>
+        <Slider
+          min={100}
+          max={900}
+          step={100}
+          defaultValue={level}
+          onChange={(nextValues) => {
+            setLevel(nextValues as number)
+          }}
+        />
+      </div>
       <div className='h-[90%]'>{colorBoxes}</div>
       {/* Footer */}
     </div>
