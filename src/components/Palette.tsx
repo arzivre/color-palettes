@@ -51,7 +51,12 @@ const Palette = ({ generatedPalette }: Props) => {
         colorsType={colorsType}
       />
       <div className='h-[90%]'>{colorBoxes}</div>
-      {/* Footer */}
+      <footer className='flex h-[5vh] items-center justify-end bg-white font-bold'>
+        {generatedPalette.paletteName}
+        <span className='mx-[1rem] my-0 text-[1.5rem]'>
+          {generatedPalette.emoji}
+        </span>
+      </footer>
     </div>
   )
 }
