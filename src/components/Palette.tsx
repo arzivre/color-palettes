@@ -27,6 +27,12 @@ const colorsType = [
   { id: 3, name: 'RGBA - rgba(255,255,255,1.0)', value: 'rgba' },
 ]
 
+function findPalette(id: string) {
+  return seedColors.findIndex(function (palette) {
+    return palette.id === id
+  })
+}
+
 const Palette = () => {
   const { id } = useParams()
 
@@ -34,9 +40,9 @@ const Palette = () => {
   const [type, setType] = useState(colorsType[0])
 
   const generatedPalette: GeneratedPalette = generatePalette(
-    seedColors[id ? Number(id) : 1]
+    seedColors[id ? findPalette(id) : 1]
   )
-  
+
   const colorBoxes = generatedPalette.colors[level].map((color) => (
     <ColorBox
       key={color.id}
