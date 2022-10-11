@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import ColorBox from './ColorBox'
 import 'rc-slider/assets/index.css'
+import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { generatePalette } from '../colorHelpers'
+import seedColors from '../seedColors'
+import ColorBox from './ColorBox'
 import Navbar from './Navbar'
-
-interface Props {
-  generatedPalette: GeneratedPalette
-}
 
 interface GeneratedPalette {
   paletteName: string
@@ -28,15 +27,20 @@ const colorsType = [
   { id: 3, name: 'RGBA - rgba(255,255,255,1.0)', value: 'rgba' },
 ]
 
-const Palette = ({ generatedPalette }: Props) => {
+const Palette = () => {
+  const { id } = useParams()
+
   const [level, setLevel] = useState<number>(500)
   const [type, setType] = useState(colorsType[0])
 
+  const generatedPalette: GeneratedPalette = generatePalette(
+    seedColors[id ? Number(id) : 1]
+  )
+  
   const colorBoxes = generatedPalette.colors[level].map((color) => (
     <ColorBox
       key={color.id}
-      // @ts-ignore
-      background={color[`${type.value}`]}
+      background={color[`${type.value as keyof Color}`]}
       name={color.name}
     />
   ))
