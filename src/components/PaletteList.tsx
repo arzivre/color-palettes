@@ -1,5 +1,6 @@
 import seedColors from '../seedColors'
 import { Link } from 'react-router-dom'
+import PaletteMini from './PaletteMini'
 
 const PaletteList = () => {
   return (
@@ -8,7 +9,7 @@ const PaletteList = () => {
       <ol>
         {seedColors.map((palette) => (
           <li key={palette.id}>
-            <Link to={`palette/${palette.id}`}>{palette.paletteName}</Link>
+            <PaletteMini />
           </li>
         ))}
       </ol>
