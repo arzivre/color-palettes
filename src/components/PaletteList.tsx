@@ -9,7 +9,7 @@ const PaletteList = () => {
       <ol>
         {seedColors.map((palette) => (
           <li key={palette.id}>
-            <PaletteMini />
+            <PaletteMini {...palette} />
           </li>
         ))}
       </ol>
