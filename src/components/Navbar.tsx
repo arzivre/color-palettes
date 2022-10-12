@@ -1,6 +1,6 @@
-import { useState, Dispatch, SetStateAction } from 'react'
-import Slider from 'rc-slider'
 import { Listbox } from '@headlessui/react'
+import Slider from 'rc-slider'
+import { Dispatch, SetStateAction } from 'react'
 import { Link } from 'react-router-dom'
 
 interface ColorType {
@@ -46,14 +46,14 @@ const Navbar = ({ level, setLevel, type, setType, colorsType }: Props) => {
             focus:outline-none focus-visible:border-indigo-500
             focus-visible:ring-2 focus-visible:ring-white
             focus-visible:ring-opacity-75 focus-visible:ring-offset-2
-            focus-visible:ring-offset-orange-300  sm:text-sm'
+            focus-visible:ring-offset-orange-300 sm:text-sm'
             >
               {type.name}
             </Listbox.Button>
             <Listbox.Options
               className='absolute mt-1 max-h-60 w-full cursor-pointer 
             overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1
-            ring-black ring-opacity-5 focus:outline-none  sm:text-sm'
+            ring-black ring-opacity-5 focus:outline-none sm:text-sm'
             >
               {colorsType.map((color) => (
                 <Listbox.Option key={color.id} value={color}>
