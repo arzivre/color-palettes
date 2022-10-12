@@ -1,7 +1,11 @@
 import { Palette } from '../seedColors'
 
-const PaletteMini = (props: Palette) => {
-  const { paletteName, emoji, colors } = props
+interface Props {
+  palette: Palette
+  handleClick: (id: string) => void
+}
+const PaletteMini = ({ palette, handleClick }: Props) => {
+  const { paletteName, emoji, colors, id } = palette
 
   const colorBoxesMini = colors.map((color) => (
     <div
@@ -15,6 +19,7 @@ const PaletteMini = (props: Palette) => {
     <div
       className='relative overflow-hidden rounded-md border-[1px]
       border-black bg-white p-2 hover:cursor-pointer'
+      onClick={() => handleClick(id)}
     >
       <ol className='h-36 w-full overflow-hidden rounded'>{colorBoxesMini}</ol>
       <h5

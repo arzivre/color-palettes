@@ -1,10 +1,16 @@
 import seedColors from '../seedColors'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import PaletteMini from './PaletteMini'
 
 const PaletteList = () => {
+  const navigate = useNavigate()
+
+  function goToPalette(id: string) {
+    navigate(`palette/${id}`)
+  }
+
   return (
-    <div className='h-[110vh] flex items-start justify-center bg-blue-600'>
+    <div className='flex h-[110vh] items-start justify-center bg-blue-600'>
       <div className='flex w-[60%] flex-col flex-wrap items-start'>
         <nav className='flex w-full justify-between text-white'>
           <h1 className='my-4 text-xl font-semibold'>React Color Pallettes</h1>
@@ -13,7 +19,7 @@ const PaletteList = () => {
         <ol className='border-box grid w-full grid-cols-3 gap-[5%]'>
           {seedColors.map((palette) => (
             <li key={palette.id}>
-              <PaletteMini {...palette} />
+              <PaletteMini palette={palette} handleClick={goToPalette} />
             </li>
           ))}
         </ol>

@@ -1,6 +1,7 @@
 import { useState, Dispatch, SetStateAction } from 'react'
 import Slider from 'rc-slider'
 import { Listbox } from '@headlessui/react'
+import { Link } from 'react-router-dom'
 
 interface ColorType {
   id: number
@@ -18,7 +19,9 @@ const Navbar = ({ level, setLevel, type, setType, colorsType }: Props) => {
   return (
     <header className='flex h-[6vh] items-center justify-between'>
       <div className='mr-3.5 flex h-full items-center bg-[#eceff1] py-0 px-3 font-serif text-lg'>
-        <a href='#'>reactcolorpalettes</a>
+        <Link to='/'>
+        reactcolorpalettes
+        </Link>
       </div>
       <div>
         <span>Level: {level}</span>
