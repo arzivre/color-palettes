@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 
 const notify = (text: string) =>
   toast(`Copied ${text}`, {
@@ -94,12 +95,14 @@ const ColorBox = ({ background, name }: ColorBoxPageProps) => {
             {clipboard.copied ? `Copied - ${background}` : 'Copy'}
           </button>
         </div>
-        <span
-          className='absolute right-0 bottom-0 w-16 bg-[rgba(255,255,255,0.3)] 
+        <Link to='/' onClick={(e) => e.stopPropagation()}>
+          <span
+            className='absolute right-0 bottom-0 w-16 bg-[rgba(255,255,255,0.3)] 
         text-center uppercase leading-8 text-white'
-        >
-          More
-        </span>
+          >
+            More
+          </span>
+        </Link>
       </div>
       <Toaster />
     </>
