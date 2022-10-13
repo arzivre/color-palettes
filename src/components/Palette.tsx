@@ -48,6 +48,7 @@ const Palette = () => {
       key={color.id}
       background={color[`${type.value as keyof Color}`]}
       name={color.name}
+      moreUrl={`/palette/${id}/${color.id}`}
     />
   ))
 

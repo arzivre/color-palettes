@@ -41,8 +41,15 @@ function useClipboard({ timeout = 2000 } = {}) {
 interface ColorBoxPageProps {
   background: string
   name: string
+  moreUrl: string
+  colorId?: string
+  paletteId?: string
 }
-const ColorBox = ({ background, name }: ColorBoxPageProps) => {
+const ColorBox = ({
+  background,
+  name,
+  moreUrl,
+}: ColorBoxPageProps) => {
   const clipboard = useClipboard({ timeout: 1500 })
 
   return (
@@ -95,7 +102,7 @@ const ColorBox = ({ background, name }: ColorBoxPageProps) => {
             {clipboard.copied ? `Copied - ${background}` : 'Copy'}
           </button>
         </div>
-        <Link to='/' onClick={(e) => e.stopPropagation()}>
+        <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
           <span
             className='absolute right-0 bottom-0 w-16 bg-[rgba(255,255,255,0.3)] 
         text-center uppercase leading-8 text-white'
