@@ -56,8 +56,9 @@ const ColorBox = ({ background, name, moreUrl }: ColorBoxPageProps) => {
           clipboard.copy(background)
           notify(background)
         }}
-        className='group relative my-0 mx-auto -mb-[7px] inline-block h-[25%] 
-      w-[20%] cursor-pointer'
+        className={`group relative my-0 mx-auto -mb-[7px] inline-block ${
+          moreUrl ? 'h-[25%]' : 'h-[50%]'
+        } w-[20%] cursor-pointer`}
       >
         <div
           style={{ background }}
@@ -91,7 +92,7 @@ const ColorBox = ({ background, name, moreUrl }: ColorBoxPageProps) => {
             <span>{name}</span>
           </div>
           <button
-            className='copy-button absolute  top-[50%] left-[50%] -mt-[15px] -ml-[50px] block
+            className='absolute  top-[50%] left-[50%] -mt-[15px] -ml-[50px] block
           h-[30px] w-[100px] transform bg-[rgba(255,255,255,0.3)] text-center text-base uppercase
           text-white opacity-0 outline-none  transition delay-300 group-hover:opacity-100'
           >

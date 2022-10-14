@@ -1,6 +1,6 @@
 import chroma from 'chroma-js'
 import { Palette } from './seedColors'
-const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900]
+const levels: number[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900]
 
 function generatePalette(starterPalette: Palette) {
   let newPalette = {
@@ -10,11 +10,13 @@ function generatePalette(starterPalette: Palette) {
     colors: {},
   }
   for (let level of levels) {
+    // @ts-ignore
     newPalette.colors[level] = []
   }
   for (let color of starterPalette.colors) {
     let scale = getScale(color.color, 10).reverse()
     for (let i in scale) {
+      // @ts-ignore
       newPalette.colors[levels[i]].push({
         name: `${color.name} ${levels[i]}`,
         id: color.name.toLowerCase().replace(/ /g, '-'),
@@ -34,7 +36,11 @@ function getRange(hexColor: string | number | chroma.Color) {
   return [chroma(hexColor).darken(1.4).hex(), hexColor, end]
 }
 
-function getScale(hexColor: any, numberOfColors: number | undefined) {
+function getScale(
+  hexColor: string | number | chroma.Color,
+  numberOfColors: number | undefined
+) {
+  // @ts-ignore
   return chroma.scale(getRange(hexColor)).mode('lab').colors(numberOfColors)
 }
 

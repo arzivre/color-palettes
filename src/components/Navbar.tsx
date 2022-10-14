@@ -9,8 +9,8 @@ interface ColorType {
   value: string
 }
 interface Props {
-  level: number
-  setLevel: Dispatch<SetStateAction<number>>
+  level?: number
+  setLevel?: Dispatch<SetStateAction<number>>
   type: ColorType
   setType: Dispatch<SetStateAction<ColorType>>
   colorsType: ColorType[]
@@ -19,25 +19,25 @@ const Navbar = ({ level, setLevel, type, setType, colorsType }: Props) => {
   return (
     <header className='flex h-[6vh] items-center justify-between'>
       <div className='mr-3.5 flex h-full items-center bg-[#eceff1] py-0 px-3 font-serif text-lg'>
-        <Link to='/'>
-        reactcolorpalettes
-        </Link>
+        <Link to='/'>reactcolorpalettes</Link>
       </div>
-      <div>
-        <span>Level: {level}</span>
-        <div className='my-0 mx-2.5 inline-block w-[340px]'>
-          <Slider
-            min={100}
-            max={900}
-            step={100}
-            defaultValue={level}
-            onChange={(nextValues) => {
-              setLevel(nextValues as number)
-            }}
-          />
+      {level && setLevel && (
+        <div>
+          <span>Level: {level}</span>
+          <div className='my-0 mx-2.5 inline-block w-[340px]'>
+            <Slider
+              min={100}
+              max={900}
+              step={100}
+              defaultValue={level}
+              onChange={(nextValues) => {
+                setLevel(nextValues as number)
+              }}
+            />
+          </div>
         </div>
-      </div>
-      <div className='w-72 '>
+      )}
+      <div className='w-72'>
         <Listbox value={type} onChange={setType}>
           <div className='relative z-10 mt-1'>
             <Listbox.Button
