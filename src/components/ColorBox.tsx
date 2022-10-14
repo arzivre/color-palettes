@@ -1,3 +1,4 @@
+import chroma from 'chroma-js'
 import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
@@ -48,6 +49,8 @@ interface ColorBoxPageProps {
 const ColorBox = ({ background, name, moreUrl }: ColorBoxPageProps) => {
   const clipboard = useClipboard({ timeout: 1500 })
 
+  const isDarkColor = chroma(background).luminance() <= 0.08
+
   return (
     <>
       <div
@@ -71,7 +74,9 @@ const ColorBox = ({ background, name, moreUrl }: ColorBoxPageProps) => {
         />
         <div
           className={`fixed left-0 right-0 top-0 bottom-0 flex scale-[0.1]
-        flex-col items-center justify-center text-[400px] text-white opacity-0
+        flex-col items-center justify-center text-[400px] ${
+          isDarkColor ? 'text-white' : 'text-black'
+        } opacity-0
          ${
            clipboard.copied
              ? 'z-20 scale-[1] transform opacity-100 transition delay-150 '
@@ -88,13 +93,19 @@ const ColorBox = ({ background, name, moreUrl }: ColorBoxPageProps) => {
           <p className='text-[300px]'>{background}</p>
         </div>
         <div className='copy-container'>
-          <div className='absolute left-0 bottom-0 w-full p-2.5 text-xs uppercase tracking-[1px] text-black'>
+          <div
+            className={`absolute left-0 bottom-0 w-full p-2.5 text-xs uppercase tracking-[1px] ${
+              isDarkColor ? 'text-white' : 'text-black'
+            }`}
+          >
             <span>{name}</span>
           </div>
           <button
-            className='absolute  top-[50%] left-[50%] -mt-[15px] -ml-[50px] block
+            className={`absolute  top-[50%] left-[50%] -mt-[15px] -ml-[50px] block
           h-[30px] w-[100px] transform bg-[rgba(255,255,255,0.3)] text-center text-base uppercase
-          text-white opacity-0 outline-none  transition delay-300 group-hover:opacity-100'
+          ${
+            isDarkColor ? 'text-white' : 'text-black'
+          } opacity-0 outline-none  transition delay-300 group-hover:opacity-100`}
           >
             {clipboard.copied ? `Copied - ${background}` : 'Copy'}
           </button>
@@ -102,8 +113,10 @@ const ColorBox = ({ background, name, moreUrl }: ColorBoxPageProps) => {
         {moreUrl && (
           <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>
             <span
-              className='absolute right-0 bottom-0 w-16 bg-[rgba(255,255,255,0.3)] 
-        text-center uppercase leading-8 text-white'
+              className={`absolute right-0 bottom-0 w-16 bg-[rgba(255,255,255,0.3)] 
+        text-center uppercase leading-8 ${
+          isDarkColor ? 'text-white' : 'text-black'
+        }`}
             >
               More
             </span>
