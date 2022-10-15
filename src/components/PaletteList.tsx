@@ -14,9 +14,9 @@ const PaletteList = () => {
       <div className='flex w-[60%] flex-col flex-wrap items-start'>
         <nav className='align-center flex w-full justify-between text-white'>
           <h1 className='my-4 text-xl font-semibold'>React Color Pallettes</h1>
-          <Link to='/palette/new' className='my-4'>
+          {/* <Link to='/palette/new' className='my-4'>
             Create Palette
-          </Link>
+          </Link> */}
         </nav>
 
         <ol className='border-box grid w-full grid-cols-3 gap-[5%]'>
