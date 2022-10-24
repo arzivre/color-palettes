@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/chroma-js": "^2.1.4",
     "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
+    "@types/react-dom": "^18.0.7",
     "@vitejs/plugin-react": "^2.1.0",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.18",
